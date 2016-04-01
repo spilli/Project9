@@ -94,12 +94,4 @@ summary(fit)
 - Overall the model seems to do a good job with a residual standard error of 2.628 on 28 degrees of freedom
 - The model predicts appropriate mpg as per the associations with various variables - displacement, transmission type and number of carburetors. For eg., By selecting a higher engine displacement a lower predicted mpg is generated. 
 
----
-
-## Code
-
-- ui.R can be found [here](https://github.com/spilli/MPG_predictor/blob/master/ui.R)
-- server.R can be found [here](https://github.com/spilli/MPG_predictor/blob/master/server.R)
-
-
 
