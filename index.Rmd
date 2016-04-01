@@ -1,0 +1,72 @@
+---
+title       : Miles Per Gallon Predictor
+subtitle    : A shiny app that predicts the mpg of your car
+author      : Sridhar Pilli
+job         : Aspiring Data Scientist
+framework   : html5slides        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Introduction
+
+- MPG predictor is a shiny application that predicts the miles per gallon of a car given its
+    - Engine displacement in cu.in.
+    - Transmission type - Automatic or Manual
+    - The number of carburetors used.
+
+- The actual prediction is carried out using a linear regression model fitted on the **mtcars** dataset from the datasets package in R
+
+```{r}
+head(mtcars,4)
+```
+
+--- .class #id 
+
+## Fitted model and its summary
+
+```{r}
+fit <- lm(mpg ~ disp + am + carb ,mtcars)
+summary(fit)
+```
+
+---
+
+## Fitted model and its summary
+- The R-squared is 80.99% indicating about 80% of the variance is captured by this model. 
+- All the variables considered has statistically significant beta values in the model. Hence this is a reasonably good model.
+- Note that there is a negative association between engine displacement and mpg. As one increases, the other decreases.
+- Likewise there is a negative association between number of carburetors and mpg.
+- Overall manual cars have higher mpg than automatic transmission type cars.
+
+
+---
+
+## App usage
+
+- Select the Engine displacement on the slider bar
+- Select the Transmission type from the drop down menu
+- Enter or select the Number of carburetors.
+
+- The main panel on the righ displays the values entered, plots them and gives out the predicted mpg and its confidence interval.
+- Confidence interval is calculated using the 95% confidence assuimng a t-distribution for the predicted mpg.
+
+---
+
+## Conclusion
+
+- Overall the model seems to do a good job with a residual standard error of 2.628 on 28 degrees of freedom
+- The model predicts appropriate mpg as per the associations with various variables - displacement, transmission type and number of carburetors. For eg., By selecting a higher engine displacement a lower predicted mpg is generated. 
+
+---
+
+## Code
+
+- ui.R can be found [here](https://github.com/spilli/MPG_predictor/blob/master/ui.R)
+- server.R can be found [here](https://github.com/spilli/MPG_predictor/blob/master/server.R)
+
+
+
